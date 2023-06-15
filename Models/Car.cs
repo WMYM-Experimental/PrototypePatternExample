@@ -14,9 +14,9 @@ namespace PrototypePatternExample.Models
         public string Model { get; set; }
         [StringLength(150)]
         public string Color { get; set; }
-        [StringLength(150)]
+        [StringLength(30)]
         public string Brand { get; set; }
-        [Range(1950, int.MaxValue)]
+        [Range(1950, 5000)]
         public int Year { get; set; }
     }
 }

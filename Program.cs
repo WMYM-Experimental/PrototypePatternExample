@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using PrototypePatternExample.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<PrototypePatternExampleContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PrototypePatternExampleContext") ?? throw new InvalidOperationException("Connection string 'PrototypePatternExampleContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
