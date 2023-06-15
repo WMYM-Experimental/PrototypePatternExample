@@ -5,7 +5,7 @@ namespace PrototypePatternExample.Models
     /// <summary>
     /// Class for modeling a car
     /// </summary>
-    public class Car
+    public class Car : ICarPrototype
     {
         public int Id { get; set; }
         [StringLength(150)]
@@ -18,5 +18,15 @@ namespace PrototypePatternExample.Models
         public string Brand { get; set; }
         [Range(1950, 5000)]
         public int Year { get; set; }
+
+        public Car Clone()
+        {
+            return (Car)MemberwiseClone();
+        }
+    }
+
+    public interface ICarPrototype
+    {
+        Car Clone();
     }
 }

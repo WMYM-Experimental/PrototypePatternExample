@@ -60,7 +60,13 @@ namespace PrototypePatternExample.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(car);
+                // Add the following 5 year models of a car
+                for (int i = 0; i < 5; i++)
+                {
+                    var newCar = car.Clone(); // Clone object using the prototype pattern
+                    newCar.Year = car.Year + i; // Add a new year
+                    _context.Add(newCar);
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
